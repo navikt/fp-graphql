@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>no.nav.foreldrepenger.felles</groupId>
+        <artifactId>fp-parent-lib</artifactId>
+        <version>5.3.3</version>
+    </parent>
+
+	<groupId>no.nav.foreldrepenger.graphql</groupId>
+	<artifactId>graphql-root</artifactId>
+	<version>0.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>GraphQL Client Generator :: Root</name>
+	<description>Library to generate Java code for GraphQL clients.</description>
+
+	<organization>
+		<name>no.nav</name>
+		<url>https://github.com/navikt</url>
+	</organization>
+
+	<licenses>
+		<license>
+			<name>MIT License</name>
+			<url>https://opensource.org/licenses/MIT</url>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<organization>Nav (Arbeids- og velferdsdirektoratet) - The Norwegian Labour and Welfare Administration</organization>
+			<organizationUrl>https://www.nav.no</organizationUrl>
+		</developer>
+	</developers>
+
+	<modules>
+		<module>graphql-runtime</module>
+		<module>graphql-maven-plugin</module>
+    </modules>
+
+	<properties>
+		<additionalparam>-Xdoclint:none</additionalparam>
+
+		<!-- SonarCloud options -->
+        <sonar.organization>navikt</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		<sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
+		<sonar.projectName>fp-graphql</sonar.projectName>
+		<sonar.projectKey>navikt_fp-graphql</sonar.projectKey>
+    </properties>
+
+	<repositories>
+		<repository>
+			<id>github</id>
+			<name>GitHub Apache Maven Packages</name>
+			<url>https://maven.pkg.github.com/navikt/fp-felles/</url>
+		</repository>
+	</repositories>
+
+	<scm>
+		<connection>scm:git:https://github.com/navikt/fp-graphql.git</connection>
+		<developerConnection>scm:git:https://github.com/navikt/fp-graphql.git</developerConnection>
+		<url>https://github.com/navikt/fp-graphql/</url>
+	</scm>
+
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>Github navikt Maven Packages</name>
+			<url>https://maven.pkg.github.com/navikt/fp-graphql</url>
+		</repository>
+	</distributionManagement>
+
+</project>

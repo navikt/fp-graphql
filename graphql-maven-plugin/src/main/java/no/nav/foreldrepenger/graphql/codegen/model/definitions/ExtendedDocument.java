@@ -1,0 +1,123 @@
+package no.nav.foreldrepenger.graphql.codegen.model.definitions;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import graphql.language.Type;
+import graphql.language.TypeName;
+
+/**
+ * GraphQL document that holds all extended definitions
+ */
+public class ExtendedDocument {
+
+    private final Collection<ExtendedObjectTypeDefinition> operationDefinitions;
+    private final Collection<ExtendedObjectTypeDefinition> typeDefinitions;
+    private final Collection<ExtendedInputObjectTypeDefinition> inputDefinitions;
+    private final Collection<ExtendedEnumTypeDefinition> enumDefinitions;
+    private final Collection<ExtendedScalarTypeDefinition> scalarDefinitions;
+    private final Collection<ExtendedInterfaceTypeDefinition> interfaceDefinitions;
+    private final Collection<ExtendedUnionTypeDefinition> unionDefinitions;
+
+    public ExtendedDocument(Collection<ExtendedObjectTypeDefinition> operationDefinitions,
+                            Collection<ExtendedObjectTypeDefinition> typeDefinitions,
+                            Collection<ExtendedInputObjectTypeDefinition> inputDefinitions,
+                            Collection<ExtendedEnumTypeDefinition> enumDefinitions,
+                            Collection<ExtendedScalarTypeDefinition> scalarDefinitions,
+                            Collection<ExtendedInterfaceTypeDefinition> interfaceDefinitions,
+                            Collection<ExtendedUnionTypeDefinition> unionDefinitions) {
+        this.operationDefinitions = operationDefinitions;
+        this.typeDefinitions = typeDefinitions;
+        this.inputDefinitions = inputDefinitions;
+        this.enumDefinitions = enumDefinitions;
+        this.scalarDefinitions = scalarDefinitions;
+        this.interfaceDefinitions = interfaceDefinitions;
+        this.unionDefinitions = unionDefinitions;
+    }
+
+    /**
+     * Get a joint list of names of all types, unions and interfaces
+     *
+     * @return Set containing all type names, union names, interface names
+     */
+    public Set<String> getTypesUnionsInterfacesNames() {
+        Set<String> typesUnionsInterfaces = new LinkedHashSet<>();
+        typeDefinitions.stream()
+                .map(ExtendedDefinition::getName)
+                .forEach(typesUnionsInterfaces::add);
+        unionDefinitions.stream()
+                .map(ExtendedDefinition::getName)
+                .forEach(typesUnionsInterfaces::add);
+        interfaceDefinitions.stream()
+                .map(ExtendedDefinition::getName)
+                .forEach(typesUnionsInterfaces::add);
+        return typesUnionsInterfaces;
+    }
+
+    /**
+     * Construct a map having interface name as a key and all children (that are extending this interface) as a value
+     *
+     * @return a map of interface name to all its children
+     */
+    public Map<String, Set<String>> getInterfaceChildren() {
+        Map<String, Set<String>> interfaceChildren = new HashMap<>();
+        for (var typeDefinition : typeDefinitions) {
+            for (Type<?> interfaceType : typeDefinition.getImplements()) {
+                interfaceChildren.computeIfAbsent(((TypeName) interfaceType).getName(), _ -> new HashSet<>())
+                        .add(typeDefinition.getName());
+            }
+        }
+        for (var interfaceTypeDefinition : interfaceDefinitions) {
+            for (Type<?> interfaceType : interfaceTypeDefinition.getImplements()) {
+                interfaceChildren.computeIfAbsent(((TypeName) interfaceType).getName(), _ -> new HashSet<>())
+                        .add(interfaceTypeDefinition.getName());
+            }
+        }
+        return interfaceChildren;
+    }
+
+    public Set<String> getInterfacesNames() {
+        return interfaceDefinitions.stream()
+                .map(ExtendedDefinition::getName)
+                .collect(Collectors.toSet());
+    }
+
+    public Set<String> getUnionsNames() {
+        return unionDefinitions.stream()
+                .map(ExtendedDefinition::getName)
+                .collect(Collectors.toSet());
+    }
+
+    public Collection<ExtendedObjectTypeDefinition> getOperationDefinitions() {
+        return operationDefinitions;
+    }
+
+    public Collection<ExtendedObjectTypeDefinition> getTypeDefinitions() {
+        return typeDefinitions;
+    }
+
+    public Collection<ExtendedInputObjectTypeDefinition> getInputDefinitions() {
+        return inputDefinitions;
+    }
+
+    public Collection<ExtendedEnumTypeDefinition> getEnumDefinitions() {
+        return enumDefinitions;
+    }
+
+    public Collection<ExtendedScalarTypeDefinition> getScalarDefinitions() {
+        return scalarDefinitions;
+    }
+
+    public Collection<ExtendedInterfaceTypeDefinition> getInterfaceDefinitions() {
+        return interfaceDefinitions;
+    }
+
+    public Collection<ExtendedUnionTypeDefinition> getUnionDefinitions() {
+        return unionDefinitions;
+    }
+}
