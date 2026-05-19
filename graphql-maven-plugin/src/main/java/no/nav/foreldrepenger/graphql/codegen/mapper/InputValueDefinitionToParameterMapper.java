@@ -1,7 +1,5 @@
 package no.nav.foreldrepenger.graphql.codegen.mapper;
 
-import static java.util.stream.Collectors.toList;
-
 import java.util.List;
 
 import graphql.language.InputValueDefinition;
@@ -40,7 +38,7 @@ public class InputValueDefinitionToParameterMapper {
                                          String parentTypeName) {
         return valueDefinitions.stream()
                 .map(inputValueDef -> map(mappingContext, inputValueDef, parentTypeName))
-                .collect(toList());
+                .toList();
     }
 
     /**

@@ -36,9 +36,6 @@ public class ParameterDefinition {
      */
     private ParameterDefinition definitionInParentType;
 
-    public ParameterDefinition() {
-    }
-
     public String getType() {
         return type;
     }
