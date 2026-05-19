@@ -39,8 +39,20 @@ Legges til i prosjekt eller moduler som har et GraphQL-skjema og som vil generer
 </dependency>
 ```
 
+### Legg til pluginRepository
+Legg til denne i aktuelle settings.xml (~/.m2 og ci/cd) og i repository som skal bruke generatoren
+```
+<pluginRepositories>
+    <pluginRepository>
+        <id>github</id> <!-- eller noe som er definert i servers -->
+        <url>https://maven.pkg.github.com/navikt/fp-graphql</url>
+    </pluginRepository>
+</pluginRepositories>
+```
+
 ### Set opp maven plugin
 Vanlig bruk. Genererte filer legges i outputDir og kan brukes i modulen / prosjektet.
+
 ```xml
 <build>
     <plugins>
