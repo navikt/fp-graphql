@@ -96,7 +96,7 @@ public class GraphQLCodegen {
 
     private void printOutputResult(String source, int classesGenerated, long duration) {
         System.out.printf("Generated %d classes from %s in folder %s, took %d ms%n",
-                classesGenerated, source, outputDir.getAbsolutePath(), duration);
+                classesGenerated, source, outputDir.getAbsolutePath(), duration);  // NOSONAR - build-output
     }
 
     protected void initCustomTypeMappings(Collection<ExtendedScalarTypeDefinition> scalarTypeDefinitions) {

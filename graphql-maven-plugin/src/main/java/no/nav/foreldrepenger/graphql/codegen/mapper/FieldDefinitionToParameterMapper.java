@@ -1,7 +1,5 @@
 package no.nav.foreldrepenger.graphql.codegen.mapper;
 
-import static java.util.stream.Collectors.toList;
-
 import java.util.Collections;
 import java.util.List;
 
@@ -44,7 +42,7 @@ public class FieldDefinitionToParameterMapper {
                                                ExtendedDefinition<?, ?> parentDefinition) {
         return fieldDefinitions.stream()
                 .map(fieldDef -> mapField(mappingContext, fieldDef, parentDefinition))
-                .collect(toList());
+                .toList();
     }
 
     /**
@@ -60,7 +58,7 @@ public class FieldDefinitionToParameterMapper {
                                                                    ExtendedDefinition<?, ?> parentTypeDefinition) {
         return fieldDefinitions.stream()
                 .map(fieldDef -> mapProjectionField(mappingContext, fieldDef, parentTypeDefinition))
-                .collect(toList());
+                .toList();
     }
 
     /**
