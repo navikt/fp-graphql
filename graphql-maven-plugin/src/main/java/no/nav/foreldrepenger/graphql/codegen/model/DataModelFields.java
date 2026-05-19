@@ -19,6 +19,7 @@ public final class DataModelFields {
     public static final String METHOD_NAME = "methodName";
     public static final String RETURN_TYPE_NAME = "returnTypeName";
     public static final String JAVA_DOC = "javaDoc";
+    public static final String GENERATE_JACKSON3 = "generateJackson3";
 
     private DataModelFields() {
     }

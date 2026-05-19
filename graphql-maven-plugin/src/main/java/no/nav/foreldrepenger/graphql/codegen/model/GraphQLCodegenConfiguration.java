@@ -63,4 +63,12 @@ public interface GraphQLCodegenConfiguration {
      */
     Boolean getGenerateJacksonTypeIdResolver();
 
+    /**
+     * Specifies whether generated code should use Jackson 3 databind packages (tools.jackson.databind)
+     * instead of Jackson 2 (com.fasterxml.jackson.databind).
+     *
+     * @return <b>true</b> if Jackson 3 databind packages should be used
+     */
+    Boolean getGenerateJackson3();
+
 }

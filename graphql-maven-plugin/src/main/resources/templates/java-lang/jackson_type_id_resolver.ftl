@@ -3,9 +3,15 @@ package ${package};
 
 </#if>
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+<#if generateJackson3>
+import tools.jackson.databind.DatabindContext;
+import tools.jackson.databind.JavaType;
+import tools.jackson.databind.jsontype.impl.TypeIdResolverBase;
+<#else>
 import com.fasterxml.jackson.databind.DatabindContext;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.jsontype.impl.TypeIdResolverBase;
+</#if>
 
 @jakarta.annotation.Generated("no.nav.foreldrepenger.graphql.GraphQLCodegen")
 public class GraphqlJacksonTypeIdResolver extends TypeIdResolverBase {
@@ -36,6 +42,17 @@ public class GraphqlJacksonTypeIdResolver extends TypeIdResolverBase {
         return JsonTypeInfo.Id.NAME;
     }
 
+<#if generateJackson3>
+    @Override
+    public String idFromValue(DatabindContext context, Object obj) {
+        return idFromValueAndType(context, obj, obj.getClass());
+    }
+
+    @Override
+    public String idFromValueAndType(DatabindContext context, Object obj, Class<?> subType) {
+        return subType.getSimpleName();
+    }
+<#else>
     @Override
     public String idFromValue(Object obj) {
         return idFromValueAndType(obj, obj.getClass());
@@ -45,4 +62,5 @@ public class GraphqlJacksonTypeIdResolver extends TypeIdResolverBase {
     public String idFromValueAndType(Object obj, Class<?> subType) {
         return subType.getSimpleName();
     }
+</#if>
 }
