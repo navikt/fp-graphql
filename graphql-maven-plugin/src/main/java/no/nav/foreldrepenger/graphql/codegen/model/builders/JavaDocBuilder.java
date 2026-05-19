@@ -54,10 +54,10 @@ public class JavaDocBuilder {
         var extensions = extendedDefinition.getExtensions();
 
         List<String> comments = new ArrayList<>();
-        if (definition != null && definition.getComments() != null) {
+        if (definition != null) {
             definition.getComments().stream()
-                    .map(Comment::getContent).filter(Utils::isNotBlank)
-                    .map(String::trim).forEach(comments::add);
+                .map(Comment::getContent).filter(Utils::isNotBlank)
+                .map(String::trim).forEach(comments::add);
         }
         extensions.stream()
                 .map(Node::getComments)

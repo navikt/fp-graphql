@@ -114,7 +114,7 @@ public class DataModelMapper {
                 .collect(Collectors.toSet());
         return document.getInterfaceDefinitions().stream()
                 .filter(def -> typeImplements.contains(def.getName()))
-                .collect(Collectors.toList());
+                .toList();
     }
 
     private static final Set<String> JAVA_RESTRICTED_KEYWORDS = new HashSet<>(Arrays.asList(

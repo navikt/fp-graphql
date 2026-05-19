@@ -1,7 +1,6 @@
 package no.nav.foreldrepenger.graphql.codegen.mapper;
 
 import java.util.Collections;
-import java.util.stream.Collectors;
 
 import graphql.language.ArrayValue;
 import graphql.language.BooleanValue;
@@ -131,7 +130,7 @@ public class ValueMapper {
             var listElementType = elementType;
             return ValueFormatter.formatList(values.stream()
                     .map(v -> map(mappingContext, v, listElementType, formatter))
-                    .collect(Collectors.toList()), formatter);
+                    .toList(), formatter);
         }
         if (graphQLType instanceof NonNullType nnt) {
             return mapArray(mappingContext, value, nnt.getType(), formatter);

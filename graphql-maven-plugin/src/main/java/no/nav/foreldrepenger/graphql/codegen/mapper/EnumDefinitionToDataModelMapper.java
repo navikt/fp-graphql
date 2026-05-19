@@ -78,7 +78,8 @@ public class EnumDefinitionToDataModelMapper {
         }
         return def.getComments().stream()
                 .map(Comment::getContent).filter(Utils::isNotBlank)
-                .map(String::trim).collect(Collectors.toList());
+                .map(String::trim)
+                .toList();
     }
 
     private List<EnumValueDefinition> map(List<graphql.language.EnumValueDefinition> enumValueDefinitions) {
@@ -88,7 +89,7 @@ public class EnumDefinitionToDataModelMapper {
                         f.getName(),
                         getJavaDoc(f),
                         DeprecatedDefinitionBuilder.build(f)))
-                .collect(Collectors.toList());
+                .toList();
     }
 
 }
