@@ -123,7 +123,8 @@ public class AnnotationsMapper {
             } else if (Utils.isNotBlank(modelPackageName)) {
                 modelPackageName += ".";
             }
-            defaults.add(getJacksonResolverTypeIdAnnotation(modelPackageName));
+            defaults.add(getJacksonResolverTypeIdAnnotation(modelPackageName,
+                    Boolean.TRUE.equals(mappingContext.getGenerateJackson3())));
         }
         return defaults;
     }
@@ -132,8 +133,9 @@ public class AnnotationsMapper {
         return !GraphQLTypeMapper.isJavaPrimitive(type);
     }
 
-    public String getJacksonResolverTypeIdAnnotation(String modelPackageName) {
-        return "com.fasterxml.jackson.databind.annotation.JsonTypeIdResolver(" + modelPackageName +
+    public String getJacksonResolverTypeIdAnnotation(String modelPackageName, boolean jackson3) {
+        var databindPackage = jackson3 ? "tools.jackson.databind" : "com.fasterxml.jackson.databind";
+        return databindPackage + ".annotation.JsonTypeIdResolver(" + modelPackageName +
             "GraphqlJacksonTypeIdResolver.class)";
     }
 

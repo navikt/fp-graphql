@@ -82,6 +82,7 @@ Vanlig bruk. Genererte filer legges i outputDir og kan brukes i modulen / prosje
 |        `generateBuilder`        |      Boolean       |     True      | Specifies whether generated model classes should have builder.                                                                      |
 |   `generateEqualsAndHashCode`   |      Boolean       |     False     | Specifies whether generated model classes should have equals and hashCode methods defined.                                          |
 | `generateJacksonTypeIdResolver` |      Boolean       |     False     | Specifies whether generated union interfaces should be annotated with a custom Jackson type id resolver generated in model package. |
+|       `generateJackson3`        |      Boolean       |     False     | Use Jackson 3 databind packages (`tools.jackson.databind`) instead of Jackson 2 (`com.fasterxml.jackson.databind`).                 |
 |   `modelValidationAnnotation`   |       String       |   `NotNull`   | Annotation for mandatory (NonNull) fields. Can be null/empty. Default: `@jakarta.validation.constraints.NotNull`                    |
 |      `customTypesMapping`       | Map(String,String) |     Empty     | *See [CustomTypesMapping](#option-customtypesmapping)*                                                                              |
 | `fieldsToExcludeFromGeneration` |    Set(String)     |     Empty     | Fields to exclude from generation should be defined here in format: `TypeName.fieldName`.                                           |
