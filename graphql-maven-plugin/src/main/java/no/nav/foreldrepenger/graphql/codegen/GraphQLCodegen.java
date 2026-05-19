@@ -26,6 +26,8 @@ import no.nav.foreldrepenger.graphql.codegen.utils.Utils;
  */
 public class GraphQLCodegen {
 
+    private static final String STRING = "String";
+
     protected final MappingConfig mappingConfig;
 
     private final List<String> schemas;
@@ -100,14 +102,14 @@ public class GraphQLCodegen {
     protected void initCustomTypeMappings(Collection<ExtendedScalarTypeDefinition> scalarTypeDefinitions) {
         for (var definition : scalarTypeDefinitions) {
             if (definition.getDefinition() != null) {
-                mappingConfig.putCustomTypeMappingIfAbsent(definition.getDefinition().getName(), "String");
+                mappingConfig.putCustomTypeMappingIfAbsent(definition.getDefinition().getName(), STRING);
             }
             for (var extension : definition.getExtensions()) {
-                mappingConfig.putCustomTypeMappingIfAbsent(extension.getName(), "String");
+                mappingConfig.putCustomTypeMappingIfAbsent(extension.getName(), STRING);
             }
         }
         mappingConfig.putCustomTypeMappingIfAbsent("ID", String.class.getSimpleName());
-        mappingConfig.putCustomTypeMappingIfAbsent("String", String.class.getSimpleName());
+        mappingConfig.putCustomTypeMappingIfAbsent(STRING, String.class.getSimpleName());
         mappingConfig.putCustomTypeMappingIfAbsent("Int", Integer.class.getSimpleName());
         mappingConfig.putCustomTypeMappingIfAbsent("Int!", "int");
         mappingConfig.putCustomTypeMappingIfAbsent("Float", Double.class.getSimpleName());

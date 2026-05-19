@@ -39,12 +39,6 @@ public class ParameterDefinition {
     public ParameterDefinition() {
     }
 
-    private ParameterDefinition(String type, String name) {
-        this.type = type;
-        this.name = name;
-        this.originalName = name;
-    }
-
     public String getType() {
         return type;
     }

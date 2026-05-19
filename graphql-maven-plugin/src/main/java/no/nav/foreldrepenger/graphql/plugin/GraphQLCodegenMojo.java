@@ -106,7 +106,7 @@ public class GraphQLCodegenMojo extends AbstractMojo {
         if (properties == null) {
             return new HashMap<>();
         }
-        Map<String, String> result = new HashMap<>(properties.size());
+        Map<String, String> result = HashMap.newHashMap(properties.size());
         for (var name : properties.stringPropertyNames()) {
             result.put(name, properties.getProperty(name));
         }

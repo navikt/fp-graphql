@@ -90,7 +90,9 @@ public class GraphQLDocumentParser {
             case InterfaceTypeDefinition _ ->
                 populateDefinition(extendedDocumentBuilder.interfaceDefinitions, definition, definitionName,
                         InterfaceTypeExtensionDefinition.class, _ -> new ExtendedInterfaceTypeDefinition());
-            default -> { }
+            default -> {
+                // NOOP
+            }
         }
     }
 

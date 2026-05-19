@@ -117,7 +117,7 @@ public class TypeDefinitionToDataModelMapper {
                 .filter(union -> union.isDefinitionPartOfUnion(definition))
                 .map(ExtendedUnionTypeDefinition::getName)
                 .map(DataModelMapper::getModelClassNameWithPrefixAndSuffix)
-                .collect(Collectors.toList());
+                .toList();
         var interfaceNames = definition.getImplements()
                 .stream()
                 .map(anImplement -> graphQLTypeMapper.getLanguageType(mappingContext, anImplement))

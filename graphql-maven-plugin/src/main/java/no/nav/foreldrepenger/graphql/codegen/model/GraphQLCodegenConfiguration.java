@@ -1,7 +1,6 @@
 package no.nav.foreldrepenger.graphql.codegen.model;
 
 import java.util.Map;
-import java.util.Set;
 
 /**
  * Defines all properties that should be parsed in the plugin.
