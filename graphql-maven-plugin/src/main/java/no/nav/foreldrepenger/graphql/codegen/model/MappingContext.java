@@ -60,11 +60,6 @@ public class MappingContext implements GraphQLCodegenConfiguration {
         return config.getGenerateJacksonTypeIdResolver();
     }
 
-    @Override
-    public Boolean getGenerateJackson3() {
-        return config.getGenerateJackson3();
-    }
-
     public ExtendedDocument getDocument() {
         return document;
     }

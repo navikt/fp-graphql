@@ -59,9 +59,6 @@ public class GraphQLCodegenMojo extends AbstractMojo {
     @Parameter(defaultValue = "false")
     private boolean generateJacksonTypeIdResolver;
 
-    @Parameter(defaultValue = "false")
-    private boolean generateJackson3;
-
     @Override
     public void execute() throws MojoExecutionException {
         addCompileSourceRoot();
@@ -79,7 +76,6 @@ public class GraphQLCodegenMojo extends AbstractMojo {
         // Generation flags
         mappingConfig.setGenerateBuilder(generateBuilder);
         mappingConfig.setGenerateJacksonTypeIdResolver(generateJacksonTypeIdResolver);
-        mappingConfig.setGenerateJackson3(generateJackson3);
 
         // Annotations
         mappingConfig.setModelValidationAnnotation(modelValidationAnnotation);

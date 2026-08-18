@@ -12,8 +12,6 @@ public class MappingConfigConstants {
 
     public static final boolean DEFAULT_GENERATE_JACKSON_TYPE_ID_RESOLVER = false;
 
-    public static final boolean DEFAULT_GENERATE_JACKSON3 = false;
-
     public static final String DEFAULT_REQUEST_SUFFIX = "Request";
     public static final String DEFAULT_RESPONSE_SUFFIX = "Response";
     public static final String DEFAULT_RESPONSE_PROJECTION_SUFFIX = "ResponseProjection";
