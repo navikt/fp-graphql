@@ -21,7 +21,6 @@ public class MappingConfig implements GraphQLCodegenConfiguration {
     // various toggles:
     private Boolean generateBuilder;
     private Boolean generateJacksonTypeIdResolver;
-    private Boolean generateJackson3;
 
     // schema scalar to type mapping:
     private Map<String, String> customTypesMapping = new HashMap<>();
@@ -93,15 +92,6 @@ public class MappingConfig implements GraphQLCodegenConfiguration {
         this.generateJacksonTypeIdResolver = generateJacksonTypeIdResolver;
     }
 
-    @Override
-    public Boolean getGenerateJackson3() {
-        return generateJackson3;
-    }
-
-    public void setGenerateJackson3(Boolean generateJackson3) {
-        this.generateJackson3 = generateJackson3;
-    }
-
     /**
      * Initializes this config with default values for any unset fields
      */
@@ -114,9 +104,6 @@ public class MappingConfig implements GraphQLCodegenConfiguration {
         }
         if (generateJacksonTypeIdResolver == null) {
             generateJacksonTypeIdResolver = MappingConfigConstants.DEFAULT_GENERATE_JACKSON_TYPE_ID_RESOLVER;
-        }
-        if (generateJackson3 == null) {
-            generateJackson3 = MappingConfigConstants.DEFAULT_GENERATE_JACKSON3;
         }
     }
 

@@ -1,7 +1,6 @@
 package no.nav.foreldrepenger.graphql.codegen.generators.impl;
 
 import static no.nav.foreldrepenger.graphql.codegen.model.DataModelFields.CLASS_NAME;
-import static no.nav.foreldrepenger.graphql.codegen.model.DataModelFields.GENERATE_JACKSON3;
 import static no.nav.foreldrepenger.graphql.codegen.model.DataModelFields.PACKAGE;
 
 import java.io.File;
@@ -36,7 +35,6 @@ public class JacksonTypeIdResolverGenerator implements FilesGenerator {
             Map<String, Object> dataModel = new HashMap<>();
             dataModel.put(PACKAGE, DataModelMapper.getModelPackageName(mappingContext));
             dataModel.put(CLASS_NAME, CLASS_NAME_GRAPHQL_JACKSON_TYPE_ID_RESOLVER);
-            dataModel.put(GENERATE_JACKSON3, Boolean.TRUE.equals(mappingContext.getGenerateJackson3()));
             var file = FreeMarkerTemplateFilesCreator.create(mappingContext, FreeMarkerTemplateType.JACKSON_TYPE_ID_RESOLVER, dataModel);
             generatedFiles.add(file);
         }
