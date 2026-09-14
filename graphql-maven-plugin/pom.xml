@@ -18,7 +18,7 @@
     <properties>
         <version.maven-plugin-api>3.9.16</version.maven-plugin-api>
         <version.maven-core>3.9.16</version.maven-core>
-        <version.maven-plugin-annotations>3.15.2</version.maven-plugin-annotations>
+        <version.maven-plugin-annotations>3.16.0</version.maven-plugin-annotations>
         <version.maven-plugin-plugin>3.16.0</version.maven-plugin-plugin>
         <version.freemarker>2.3.35</version.freemarker>
         <version.graphql-java>26.1</version.graphql-java>
